@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+        th {
+            background-color: yellow;
+        }
+        td:first-child, td:nth-child(2) {
+            color: red;
+        }
+        thead tr:nth-child(2) th {
+            background-color: green;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        const dataset = {"Products": [
+                {
+                    "ProductID": "p123",
+                    "ProductName": "DELL Inspiron 14NR",
+                    "Quantity": 100,
+                    "UnitPrice": 150000
+                },
+                {
+                    "ProductID": "p456",
+                    "ProductName": "HP Inspiron 113",
+                    "Quantity": 130,
+                    "UnitPrice": 140000
+                }
+            ]};
+
+        function displayDetails() {
+            const products = dataset.Products;
+            const detailsContainer = document.getElementById("productbody");
+
+            detailsContainer.innerHTML = "";
+
+            products.forEach(product => {
+                const tr = document.createElement("tr");
+
+                const tdID = document.createElement("td");
+                tdID.innerText = product.ProductID;
+
+                const tdName = document.createElement("td");
+                tdName.innerText = product.ProductName;
+
+                const tdQuantity = document.createElement("td");
+                tdQuantity.innerText = product.Quantity;
+
+                const tdPrice = document.createElement("td");
+                tdPrice.innerText = product.UnitPrice;
+
+                tr.appendChild(tdID);
+                tr.appendChild(tdName);
+                tr.appendChild(tdQuantity);
+                tr.appendChild(tdPrice);
+
+                detailsContainer.appendChild(tr);
+            });
+        }
+
+        window.onload = displayDetails;
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4">List of Products</th>
+            </tr>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+            </tr>
+        </thead>
+        <tbody id="productbody">
+        </tbody>
+    </table>
+</body>
+</html>

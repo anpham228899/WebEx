@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Quadratic</title>
+    <style>
+        table, td {
+            border: 1px solid black;
+        }
+        #kq {
+            color: red;
+        }
+    </style>
+    <script>
+        function solution() {
+            var a = parseFloat(document.getElementById("hsa").value);
+            var b = parseFloat(document.getElementById("hsb").value);
+            var c = parseFloat(document.getElementById("hsc").value);
+            
+            if (a == 0) {
+                alert('Not a quadratic equation');
+                return; 
+            }
+
+            var delta = b * b - 4 * a * c;
+            var result;
+
+            if (delta < 0) {
+                result = "Vo nghiem";
+            } else if (delta === 0) {
+                var x = -b / (2 * a);
+                result = `Nghiem kep: x1=x2= ${x}`;
+            } else {
+                var x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                var x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                result = `x1= ${x1}; x2= ${x2}`;
+            }
+            document.getElementById("kq").innerText = result;
+        }
+
+        function clearFields() {
+            document.getElementById("hsa").value = "";
+            document.getElementById("hsb").value = "";
+            document.getElementById("hsc").value = "";
+            document.getElementById("kq").innerText = "";
+        }
+    </script>
+</head>
+<body>
+    <table style="border: 1px;">
+        <tr>
+            <td colspan="2"><div style="background-color:lightgreen;">The quadratic equation</div></td>
+        </tr>
+        <tr>
+            <td>a:</td>
+            <td><input type="number" id="hsa"></td>
+        </tr>
+        <tr>
+            <td>b:</td>
+            <td><input type="number" id="hsb"></td>
+        </tr>
+        <tr>
+            <td>c:</td>
+            <td><input type="number" id="hsc"></td>
+        </tr>
+        <tr>
+            <td>Result:</td>
+            <td id="kq"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" onclick="solution()" value="Find solution">
+                <input type="button" onclick="clearFields()" value="Clear">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

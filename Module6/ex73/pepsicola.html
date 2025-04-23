@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PepsiCola</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+        th {
+            background-color: yellow;
+        }
+        td:first-child, td:nth-child(2) {
+            color: red;
+        }
+        thead tr:nth-child(2) th {
+            background-color: green;
+            color: white;
+        }
+    </style>
+    <script type="text/javascript">
+        var products = [
+                {
+                    code: "sp1",
+                    name: "Cocacola",
+                    price: 15000
+                },
+                {
+                    code: "sp2",
+                    name: "Pepsi",
+                    price: 25000
+                },
+                {
+                    code: "sp3",
+                    name: "Sting",
+                    price: 17000
+                },
+            ]
+
+        function displayDetails() {
+            const detailsContainer = document.getElementById("productbody");
+
+            detailsContainer.innerHTML = "";
+
+            products.forEach(product => {
+                const tr = document.createElement("tr");
+
+                const tdCode = document.createElement("td");
+                const tdName = document.createElement("td");
+                const tdPrice = document.createElement("td");
+
+                tdCode.innerText = product.code;
+                tdName.innerText = product.name;
+                tdPrice.innerText = product.price;
+
+                tr.appendChild(tdCode);
+                tr.appendChild(tdName);
+                tr.appendChild(tdPrice);
+
+                detailsContainer.appendChild(tr);
+            });
+        }
+
+        window.onload = displayDetails;
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="4">List of Products</th>
+            </tr>
+            <tr>
+                <th>Product Code</th>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="productbody">
+        </tbody>
+    </table>
+</body>
+</html>

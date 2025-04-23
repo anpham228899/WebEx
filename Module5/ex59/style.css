@@ -1,0 +1,69 @@
+body {
+    background-image: url(images/Wrap.jpg);
+    background-repeat: repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    background-color: white;
+    width: 80%;
+    height: 90%;
+    display: flex;
+}
+.navigation {
+    background-color: black;
+    color: white;
+    width:20%;
+}
+.navigation h1{
+    color: white;
+}
+.navigation a{
+    color: green;
+    text-decoration: none;
+    margin-left: 10px;
+}
+.navigation a:hover {
+    color: red;
+}
+.right {
+    padding: 20px;
+    width: 80%;
+}
+.highlight {
+    background-color: yellow;
+    border: 1px solid black;
+    text-align: center;
+    width: 100%;
+}
+.highlight b{
+    color: black;
+    padding: 20px;
+    font-size: 13px;
+}
+h1 {
+    color: green;
+    font-size: 20px;
+    padding: 10px;
+}
+b {
+    color: red;
+}
+.footer {
+    text-align: center;
+    color: green;
+}
+.logo {
+    text-align: center;
+}
+input {
+    border: none;
+    background-color: yellow;
+    color: black;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 13px;
+    width:70px;
+}

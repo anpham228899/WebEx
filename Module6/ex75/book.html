@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subject Book</title>
+    <style>
+        th,td,tr,table{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        tr:nth-child(2n+1){
+            background-color: #D3D3D3;
+        }
+        table tr td table tr:nth-child(2n+1){
+            background-color: #D3D3D3;
+        }
+        table tr td table tr:nth-child(2n){
+            background-color: #ffffff;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sinhvien = {
+                Ma: 1,
+                Ten: "Trần Duy Thanh",
+                Sachs: [
+                    { Ma: "S1", Ten: "Hồng Lâu Mộng", Trang: 100 },
+                    { Ma: "S2", Ten: "Tây Du Ký", Trang: 200 },
+                    { Ma: "S3", Ten: "Tam Quốc Chí", Trang: 90 },
+                    { Ma: "S4", Ten: "Bích Huyết Kiếm", Trang: 70 },
+                    { Ma: "S5", Ten: "Anh Hùng Xạ Điêu", Trang: 1000 },
+                    { Ma: "S6", Ten: "Thần Điêu Đại Hiệp", Trang: 500 },
+                    { Ma: "S7", Ten: "Tần Thủy Hoàng", Trang: 600 },
+                    { Ma: "S8", Ten: "Chiến Quốc", Trang: 400 },
+                    { Ma: "S9", Ten: "Hán Sở Tranh Hùng", Trang: 300 },
+                    { Ma: "S10", Ten: "Bảo Đao", Trang: 700 },
+                ],
+                ChiTiet: function () {
+                    return this.Ma + " " + this.Ten;
+                }
+            };
+
+            document.getElementById("studentDetails").innerText = sinhvien.ChiTiet();
+
+            var tableBody = document.getElementById("bookTableBody");
+            sinhvien.Sachs.forEach(book => {
+                let row = document.createElement("tr");
+                row.innerHTML = `<td>${book.Ma}</td><td>${book.Ten}</td><td>${book.Trang}</td>`;
+                tableBody.appendChild(row);
+            });
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Nhập Mã:</td>
+            <td colspan=2><input type="text" id="Ma"></td>
+        </tr>
+            <tr>
+            <td>Nhập Tên:</td>
+            <td colspan=2><input type="text" id="Ten"></td>
+        </tr>
+            <tr>
+            <td>Mã và Tên:</td>
+            <td colspan=2><p id="studentDetails"></p></td>
+        </tr>
+        <tr>
+            <td colspan=3>Danh sách Sách đang mượn:</td>
+        </tr>
+        <tr>
+            <td  colspan=3>
+                <table id="bookTableBody">
+                    <tr>
+                        <th>Mã Sách</th>
+                        <th>Tên Sách</th>
+                        <th>Số Trang</th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

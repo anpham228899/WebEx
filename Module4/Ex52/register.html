@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <style>
+        label {
+            padding: 10px;
+            display: block;
+        }
+        input, select, textare, button{
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            width: 100%;
+        }
+        button {
+            background-color: #800020;
+            color: white;
+            border: none;
+            width: 10%;
+        }
+        button:hover {
+            background-color: #a83344;
+        }
+    </style>
+</head>
+<body>
+    <h3>Contact the editorial office</h3>
+    <form action="form.html" method="get">
+    <table>
+        <tr>
+            <td colspan="2"><label for="fullname">Full name</label></td>
+        <tr>
+        <tr>
+            <td colspan="2"><input type="text" name="fullname" id="fullname" required></td>
+        </tr>
+        <tr>
+            <td><label for="email">Email</label></td>
+            <td><label for="send">Send to</label></td>
+        </tr>
+        <tr>
+            <td><input type="email" name="email" id="email" required></td>
+            <td>
+                <select id="send" name="send">
+                    <option value="Editorial Board">Editorial Board</option>
+                    <option value="News Department">News Department</option>
+                    <option value="Board of Perspectives">Board of Perspectives</option>
+                    <option value="World Board">World Board</option>
+                    <option value="Business Department">Business Department</option>
+                </select>
+            </td>
+        <tr>
+            <td colspan="2"><label for="title">Title</label></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="text" name="title" id="title"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="content">Content</label></td>
+        </tr>
+        <tr>
+            <td colspan="2"><textarea name="content" id="content" rows="10" cols="30"></textarea></td>
+        </tr>
+    </table>
+    <button type="submit">Send</button>
+    </form>
+</body>
+</html>

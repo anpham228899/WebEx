@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product-GET</title>
+    <style>
+        th {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+            padding: 15px;
+        }
+        button {
+            background-color: #F6C242; 
+            color: white;
+            align: right;
+        }
+    </style>
+    <script>
+        function sum(a,b) {
+            document.getElementById("result").innerHTML=(eval(a)+eval(b))
+        }
+    </script>
+</head>
+<body>
+<form action="result.html" method="get">
+    <table>
+        <thead>
+            <tr>
+                <th>Part Number</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Item table</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>C112</td>
+                <td>Mouse</td>
+                <td>19.95$</td>
+                <td><input id="a" type="text" name="qty1"></td>
+                <td><input id="b" type="text" name="itemtable1"></td>
+            </tr>
+            <tr>
+                <td>B124</td>
+                <td>Keyboard US</td>
+                <td>29.95$</td>
+                <td><input id="a" type="text" name="qty2"></td>
+                <td><input id="b" type="text" name="itemtable2"></td>
+            </tr>
+            <tr>
+                <td>U125</td>
+                <td>USB KingMax</td>
+                <td>39.95$</td>
+                <td><input id="a" type="text" name="qty3"></td>
+                <td><input id="b" type="text" name="itemtable3"></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div align="right">
+        <label for="total" id="result">Total: </label>
+        <input id="total">
+    </div>
+    <br>
+    <div align="right">
+    <button type="submit" onclick="sum(a.value, b.value)">Sum</button>
+    </div>
+</form>
+</body>
+</html>

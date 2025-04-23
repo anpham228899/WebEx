@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Math</title>
+    <script type="text/javascript">
+        function max(){
+            var a=parseFloat(document.getElementById("hsa").value)
+            var b=parseFloat(document.getElementById("hsb").value)
+            var c=parseFloat(document.getElementById("hsc").value)
+            var result=Math.max(a,b,c)
+            document.getElementById("kq").innerText = result;
+        }
+        function min(){
+            var a=parseFloat(document.getElementById("hsa").value)
+            var b=parseFloat(document.getElementById("hsb").value)
+            var c=parseFloat(document.getElementById("hsc").value)
+            var result=Math.min(a,b,c)
+            document.getElementById("kq").innerText = result;
+        }
+        function sin(){
+            var a=parseFloat(document.getElementById("hsa").value)
+            var result=Math.sin(a)
+            document.getElementById("kq").innerText = result;
+        }
+        function cos(){
+            var a=parseFloat(document.getElementById("hsa").value)
+            var result=Math.cos(a)
+            document.getElementById("kq").innerText = result;
+        }
+        function pow(){
+            var a=parseFloat(document.getElementById("hsa").value)
+            var b=parseFloat(document.getElementById("hsb").value)
+            var result=Math.pow(a,b)
+            document.getElementById("kq").innerText = result;
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>a: </td>
+                <td><input type="number" id="hsa"></td>
+            </tr>
+            <tr>
+                <td>b: </td>
+                <td><input type="number" id="hsb"></td>
+            </tr>
+            <tr>
+                <td>c: </td>
+                <td><input type="number" id="hsc"></td>
+            </tr>
+            <tr>
+                <td>Result: </td>
+                <td id="kq"></td>
+            </tr>
+        </table>
+        <input type="button" onclick="max()" value="Max">
+        <input type="button" onclick="min()" value="Min">
+        <input type="button" onclick="sin()" value="Sin(a)">
+        <input type="button" onclick="cos()" value="Cos(a)">
+        <input type="button" onclick="pow()" value="a^b">
+    </form>
+</body>
+</html>

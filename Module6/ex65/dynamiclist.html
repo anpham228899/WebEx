@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Dynamic List</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><button type="button" onclick="addnode()">Add Node</button></td>
+            <td>Content <input type="text" id="content1"></td>
+            <td>Position <input type="number" id="position1"></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="removenode()">Remove Node</button></td>
+            <td></td>
+            <td>Position <input type="number" id="position2"></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="modifynode()">Modify Node</button></td>
+            <td>Content <input type="text" id="content3"></td>
+            <td>Position <input type="number" id="position3"></td>
+        </tr>
+    </table>
+    <div id="node">
+        <ul>Web Node
+            <li>Database</li>
+            <li>Web1</li>
+            <li>Web2</li>
+        </ul>
+    </div>
+
+     <script>
+        function addnode(){
+            const ul = document.querySelector("#node ul")
+            const content = document.getElementById("content1").value
+            
+            const newli = document.createElement("li")
+            newli.innerText = content
+
+            ul.appendChild(newli)
+
+            document.getElementById("content1").value = ""
+        }
+        function removenode() {
+            const ul = document.querySelector("#node ul")
+            position = parseInt(document.getElementById("position2").value)
+            
+            const removeli = ul.children[position - 1]
+            ul.removeChild(removeli)
+
+            document.getElementById("position2").value = ""
+        }
+        function modifynode(){
+            const ul = document.querySelector("#node ul")
+            const content = document.getElementById("content3").value
+            position = parseInt(document.getElementById("position3").value)
+
+            const newli = document.createElement("li")
+            newli.innerText = content
+            const replaceli = ul.children[position - 1]
+            ul.replaceChild(newli, replaceli)
+
+            document.getElementById("content3").value = ""
+            document.getElementById("postion3").value = ""
+        }
+    </script>
+</body>
+</html>

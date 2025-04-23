@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Style-trigger</title>
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        table {
+            width: 100%;
+        }
+        thead,tfoot
+        {
+        background-color:blue;
+        color:white;
+        }
+        tbody tr:nth-child(2n+1)
+        {
+        background-color:whitesmoke
+        }
+        tbody tr:nth-child(2n) {
+        background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td align="center">1</td>
+                <td>123456</td>
+                <td>Albert Einstein</td>
+            </tr>
+            <tr>
+                <td align="center">2</td>
+                <td>321232</td>
+                <td>Niels Bohr</td>
+            </tr>
+            <tr>
+                <td align="center">3</td>
+                <td>987544</td>
+                <td>Stephen Hawking</td>
+            </tr>
+            <tr>
+                <td align="center">4</td>
+                <td>359687</td>
+                <td>Isaac Newton</td>
+            </tr>
+            <tr>
+                <td align="center">5</td>
+                <td>574878</td>
+                <td>Nikola Tesla</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td  colspan="3">Designed by John</td>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        const rows = document.querySelectorAll("tbody tr")
+        rows.forEach(row => {
+            row.addEventListener("mouseover", () => {
+                row.style.backgroundColor = "yellow"
+            })
+
+            row.addEventListener("mouseleave", () => {
+                row.style.backgroundColor = "green"
+            })
+        })
+    </script>
+</body>
+</html>

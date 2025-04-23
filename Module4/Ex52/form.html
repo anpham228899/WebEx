@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form Result</title>
+    <script>
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(
+                /[?&]+([^=&]+)=([^&]*)/gi,
+                function (m, key, value) {
+                    vars[key] = value;
+                }
+            );
+            return vars;
+        }
+
+        function results() {
+            var fullname = unescape(getUrlVars()["fullname"]);
+            var email = unescape(getUrlVars()["email"]);
+            var department = unescape(getUrlVars()["send"]);
+            var title = unescape(getUrlVars()["title"]);
+            var content = unescape(getUrlVars()["content"]);
+
+            document.getElementById("fullname").innerHTML = fullname;
+            document.getElementById("email").innerHTML = email;
+            document.getElementById("department").innerHTML = department;
+            document.getElementById("title").innerHTML = title;
+            document.getElementById("content").innerHTML = content;
+        }
+    </script>
+</head>
+<body onload="results()">
+    <h3>Form Result</h3>
+    <p>Full Name: <span id="fullname"></span></p>
+    <p>Email: <span id="email"></span></p>
+    <p>Department: <span id="department"></span></p>
+    <p>Title: <span id="title"></span></p>
+    <p>Content: <span id="content"></span></p>
+</body>
+</html>

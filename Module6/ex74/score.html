@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Show Score</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        function calculateAverage(monHocs) {
+            let total = 0;
+            monHocs.forEach(mon => total += mon.Diem);
+            return (total / monHocs.length).toFixed(2);
+        }
+
+        function getResult(avg) {
+            return avg >= 5 ? "Đậu" : "Rớt";
+        }
+
+        function xuly_tai1sv() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "database-students.json", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const students = JSON.parse(xhr.responseText);
+                    const tableBody = document.getElementById("content");
+
+                    students.forEach(student => {
+                        const avg = calculateAverage(student.MonHocs);
+                        const result = getResult(avg);
+
+                        const row = `
+                            <tr>
+                                <td>${student.Ma}</td>
+                                <td>${student.Ten}</td>
+                                <td>${student.MonHocs[0].Diem}</td>
+                                <td>${student.MonHocs[1].Diem}</td>
+                                <td>${student.MonHocs[2].Diem}</td>
+                                <td>${avg}</td>
+                                <td>${result}</td>
+                            </tr>
+                        `;
+
+                        tableBody.innerHTML += row;
+                    });
+                }
+            };
+            xhr.send();
+        }
+        window.onload = xuly_tai1sv();
+    </script>
+</head>
+<body>
+    <p>Muốn tìm gì: <input type="text" id="input"></p>
+    <table>
+        <thead>
+            <tr>
+                <th rowspan="2">Mã Sinh Viên</th>
+                <th rowspan="2">Tên Sinh Viên</th>
+                <th colspan="3">Điểm thành phần</th>
+                <th rowspan="2">Điểm Trung Bình</th>
+                <th rowspan="2">Kết quả</th>
+            </tr>
+            <tr>
+                <th>Toán</th>
+                <th>Lý</th>
+                <th>Hoá</th>
+            </tr>
+        </thead>
+        <tbody id="content">
+        </tbody>
+    </table>
+</body>
+</html>

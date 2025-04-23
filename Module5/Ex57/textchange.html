@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product GET</title>
+    <style>
+        th {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+            padding: 15px;
+        }
+        button {
+            background-color: #F6C242; 
+            color: white;
+            border: none;
+        }
+    </style>
+    <script>
+        function sum(priceId, qtyId, itemId) {
+            var price = parseFloat(document.getElementById(priceId).innerText.replace("$", ""))
+            var quantity = parseFloat(document.getElementById(qtyId).value)
+            var itemTotal = price * quantity
+            document.getElementById(itemId).value = itemTotal
+            calculateSum()
+        }
+
+        function calculateSum() {
+            let total = 0;
+            document.querySelectorAll(".itemtotal").forEach(input => {
+                total += parseFloat(input.value)
+            })
+            document.getElementById('total').value = total
+        }
+    </script>
+</head>
+<body>
+<form>
+    <table>
+        <thead>
+            <tr>
+                <th>Part Number</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Item Table</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>C112</td>
+                <td>Mouse</td>
+                <td id="price1">19.95$</td>
+                <td><input id="qty1" type="number" name="qty1" oninput="sum('price1', 'qty1', 'it1')"></td>
+                <td><input id="it1" type="text" name="itemtable1" class="itemtotal" readonly></td>
+            </tr>
+            <tr>
+                <td>B124</td>
+                <td>Keyboard US</td>
+                <td id="price2">29.95$</td>
+                <td><input id="qty2" type="number" name="qty2" oninput="sum('price2', 'qty2', 'it2')"></td>
+                <td><input id="it2" type="text" name="itemtable2" class="itemtotal" readonly></td>
+            </tr>
+            <tr>
+                <td>U125</td>
+                <td>USB KingMax</td>
+                <td id="price3">39.95$</td>
+                <td><input id="qty3" type="number" name="qty3" oninput="sum('price3', 'qty3', 'it3')"></td>
+                <td><input id="it3" type="text" name="itemtable3" class="itemtotal" readonly></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div align="right">
+        <label for="total">Total: </label>
+        <input id="total" type="text" readonly>
+    </div>
+    <br>
+    <div align="right">
+        <button type="submit">Submit</button>
+    </div>
+</form>
+</body>
+</html>

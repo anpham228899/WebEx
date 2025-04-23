@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+</head>
+<body style="background-color: #89cfef";>
+    <div align="center">
+        <img src="images/Jackson.gif" title="logo">
+    </div>
+    <h1 align="center">Registration Form</h1>
+    <p align="center">Register your Jackson Electronics product here</p>
+    <form>
+        <table style="margin-left: 50px;">
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="first"></td>
+                <td>Last Name:</td>
+                <td><input type="text" name"last"></td>
+            </tr>
+            <tr>
+                <td>Address #1:</td>
+                <td><input type="text" name="ad1"></td>
+            </tr>
+            <tr>
+                <td>Address #2:</td>
+                <td><input type="text" name="ad2"></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><input type="text" name="city"></td>
+                <td>State</td>
+                <td><input type="text" name="state"></td>
+                <td>Zip</td>
+                <td><input type="text" name="zip"></td>
+            </tr>
+            <tr><td colspan="6"><hr><td></tr>
+            <tr>
+                <td>Product</td>
+                <td><select name="product">
+                <option value="scan">ScanMaster</option>
+                <option value="hi">Hello</option></select></td>
+            </tr>
+            <tr>
+                <td>Date Purchased</td>
+                <td><input type="date" value="date" name="date"></td>
+            </tr>
+            <tr>
+                <td>Serial:</td>
+                <td><input type="number" value="seri" name="seri"></td>
+            </tr>
+            <tr rowspan="3">
+                <td>Used for:</td>
+                <td> <input type="radio" name="home" value="home"> 
+                Home </td>
+                <td> <input type="radio" name="edu" value="edu"> 
+                Educational Insitution </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <input type="radio" name="biz" value="biz"> 
+                Business </td>
+                <td> <input type="radio" name="other" value="other"> 
+                Other </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <input type="radio" name="gorn" value="gorn"> 
+                Government </td>
+            </tr>
+            <tr rowspan="2">
+                <td>System (check all that apply):</td>
+                <td><input type="checkbox" name="win" value="win"> 
+                Windows</td>
+                <td><input type="checkbox" name="unix" value="unix"> 
+                UNIX</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox" name="mac" value="mac"> 
+                Macintosh</td>
+                <td><input type="checkbox" name="other" value="other"> 
+                Other</td>
+            </tr>
+            <tr><td colspan="6"><hr><td></tr>
+            <tr>
+                <td>Comments?:</td>
+                <td colspan="5"><textarea rows="6"></textarea></td>
+            </tr>
+        </table>
+        <div align="center">
+            <button type="button" onclick="alert('Registration Successful!')">
+                Click to register
+            </button>
+            <button type="reset" onclick="alert('Cancelled')">
+                Click to cancel
+            </button>
+        </div>
+    </form>
+</body>
+</html>

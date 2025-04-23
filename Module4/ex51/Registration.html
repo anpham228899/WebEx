@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body {
+            background-color: #63999A;
+            color: white;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        ol li {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <img src="Logo.gif" title="logo" alt="st.mary's of northland pines">
+    </div>
+    <h1>Newborn Registration</h1>
+    <form>
+        <label>Date</label>
+        <input type="date" value="" name="date">
+        <br>
+        <ol type="1">
+            <li>
+                Infant's first name: <input type="text" name="infname" value=""> 
+                Last: <input type="text" name="inlname" value="">
+            </li>
+            <li>
+                Medical Record#: <input type="number" name="rcdno" value="">
+            </li>
+            <li>
+                Date of birth: <input type="date" name="dob" value="">
+            </li>
+            <li>
+                Birth weight: <input type="number" name="weight" value="">
+            </li>
+            <li>
+                APGAR score: <input type="number" name="apgarscore" value="">
+            </li>
+            <li>
+                Mother's first name: <input type="text" name="momfname" value="">
+                Last: <input type="text" name="momlname" value="">
+            </li>
+            <li>
+                Father's first name: <input type="text" name="dadfname" value="">
+                Last: <input type="text" name="dadlname" value="">
+            </li>
+            <li>
+                Physician (check all that apply):
+                <select name="phys" multiplesize="5">
+                    <option>Dr.Warren Albert</option>
+                    <option>Dr.Maria Alvarez</option>
+                    <option>Dr.Karen Brinkman</option>
+                    <option>Dr.Micheal Kerry</option>
+                    <option>Dr.Micheal Jackson</option>
+                </select>
+            </li>
+        </ol>
+        <div align="center">
+            <button onclick="alert('Registered')" type="submit">Register</button>
+            <button onclick="alert('Canceled')"" type="reset">Cancel</button>
+        </div>
+    </form>
+</body>
+</html>

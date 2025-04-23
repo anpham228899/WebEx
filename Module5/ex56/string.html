@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>String Processing</title>
+    <style>
+        tr,td {
+            text-align: center;
+        }
+        legend {
+            text-align: left;
+        }
+        input {
+            width: 100%;
+        }
+    </style>
+    <script>
+        function Uppercase() {
+            var inputdt = document.getElementById("input").value;
+            document.getElementById("output").value = inputdt.toUpperCase();
+        }
+        function Lowercase() {
+            var inputdt = document.getElementById("input").value;
+            document.getElementById("output").value = inputdt.toLowerCase();
+        }
+        function EnterData() {
+            var inputdt = document.getElementById("input").value;
+            document.getElementById("output").value = inputdt;
+        }
+        function CountUpper() {
+            var inputdt = document.getElementById("input").value;
+            var count = (inputdt.match(/[A-Z]/g) || []).length;
+            document.getElementById("output").value = `Uppercase characters: ${count}`;
+        }
+        function Oneword() {
+            var inputdt = document.getElementById("input").value;
+            var words = inputdt.split(/\s+/).filter(word => word);
+            document.getElementById("output").value = words.join("\n");
+        }
+        function WordCount() {
+            var inputdt = document.getElementById("input").value;
+            var count = inputdt.split(/\s+/).filter(word => word).length;
+            document.getElementById("output").value = `${count}`;
+        }
+        function CountLower() {
+            var inputdt = document.getElementById("input").value;
+            var count = (inputdt.match(/[a-z]/g) || []).length;
+            document.getElementById("output").value = `${count}`;
+        }
+        function Print() {
+            var inputdt = document.getElementById("input").value;
+            var vowels = (inputdt.match(/[aeiouAEIOU]/g) || []).join("");
+            var consonants = (inputdt.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g) || []).join("");
+            document.getElementById("output").value = `Vowels: ${vowels}\nConsonants: ${consonants}`;
+        }
+        function W3S() {
+            window.open("https://w3c.github.io/N3/ns/string.html", "_blank");
+        }
+    </script>
+</head>
+<body>
+    <h1>Using String Processing functions</h1>
+    <table>
+        <tr>
+            <td><fieldset>
+                <legend><b>Input Data</b></legend>
+                <textarea width="80" height="10" id="input"></textarea>
+            </fieldset></td>
+            <td><fieldset>
+                <legend><b>Result</b></legend>
+                <textarea width="80" height="10" id="output"></textarea>
+            </fieldset></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="EnterData()" value="Enter Data"></td>
+            <td><input type="button" onclick="CountUpper()" value="Count the number of the uppercase characters"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="Uppercase()" value="Uppercase display"></td>
+            <td><input type="button" onclick="Oneword()" value="Ouput one word per line"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="Lowercase()" value="Lowercase display"></td>
+            <td><input type="button" onclick="WordCount()" value="Word Count"></td>
+        </tr>
+        <tr>
+            <td><input type="button" onclick="CountLower()" value="Count the number of the lowercase characters"></td>
+            <td><input type="button" onclick="Print()" value="Print vowels, consonants"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" onclick="W3S()" value="W3C's String Processing Website"></td>
+        </tr>
+    </table>
+</body>
+</html>

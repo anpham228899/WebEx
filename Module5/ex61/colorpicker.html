@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Color Picker</title>
+    <style>
+        h1 { 
+            text-align: center;
+        }
+        input {
+            width: 20px;
+        }
+        td {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>A Simple Color Picker</h1>
+    <table border="1px">
+        <tr>
+            <td>
+                <p>Background (enter values from "00" to "FF")</p>
+                <label for="bgred">RED: </label>
+                <input type="text" id="bgred" value="FF">
+                <label for="bggreen">GREEN: </label>
+                <input type="text" id="bggreen" value="FF">
+                <label for="bgblue">BLUE: </label>
+                <input type="text" id="bgblue" value="FF">
+                <p>Text (enter values from "00" to "FF")</p>
+                <label for="red">RED: </label>
+                <input type="text" id="red" value="FF">
+                <label for="green">GREEN: </label>
+                <input type="text" id="green" value="FF">
+                <label for="b lue">BLUE: </label>
+                <input type="text" id="blue" value="FF">
+                <br>
+                <br>
+                <div align="center">
+                <button onclick="colorpicker()">Apply</button>
+                <button onclick="reload()">Reload</button>
+                </div>
+                <br>
+            </td>
+            <td class="text" id="text">
+                <p>HAMLET</p>
+                <p>Speak the speech, I pray you, as I pronounced it to you, trippingly on the tongue: but if you mouth it, as many of your players do, I had as lief the town-crier spoke my lines.</p>
+            </td>
+        </tr>
+    </table>
+    <p>*If you are using Netscape, you won't be able to change the text color.</p>
+
+    <script>
+        function colorpicker(){
+            var bred = document.getElementById("bgred").value
+            var bgreen = document.getElementById("bggreen").value
+            var bblue = document.getElementById("bgblue").value
+
+            var tred = document.getElementById("red").value
+            var tgreen = document.getElementById("green").value
+            var tblue = document.getElementById("blue").value
+
+            var bcolor = `#${bred}${bgreen}${bblue}`
+            var tcolor = `#${tred}${tgreen}${tblue}`
+
+            var textcolor = document.getElementById("text")
+            textcolor.style.backgroundColor = bcolor
+            textcolor.style.color = tcolor
+        }
+        function reload(){
+            document.getElementById("bgred").value = "FF";
+            document.getElementById("bggreen").value = "FF";
+            document.getElementById("bgblue").value = "FF";
+
+            document.getElementById("red").value = "00";
+            document.getElementById("green").value = "00";
+            document.getElementById("blue").value = "00"
+
+            var textcolor = document.getElementById("text")
+            textcolor.style.backgroundColor = "#FFFFFF"
+            textcolor.style.color = "#000000"
+        }
+    </script>
+</body>
+</html>

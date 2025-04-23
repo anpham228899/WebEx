@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding-right: 15px;
+            padding-left: 5px;
+        }
+        th, td {
+            text-align: left;
+        }
+        .green {
+            color: white;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Title:</th>
+                <th colspan="2">
+                <select id="titleDropdown">
+                </select>
+                </th>
+            </tr>
+            <tr class="green">
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        function loadXML() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "data.xml", true);
+            xhr.onload = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    parseXML(xhr.responseXML);
+                }
+            };
+            xhr.send();
+        }
+
+        function parseXML(xmlDoc) {
+            var employees = xmlDoc.getElementsByTagName("employee");
+            var etitle = new Set();
+
+            Array.from(employees).forEach(employee => {
+                var title = employee.getAttribute("title");
+                etitle.add(title);
+            });
+
+            var dropdown = document.getElementById("titleDropdown");
+            etitle.forEach(title => {
+                var option = document.createElement("option");
+                option.value = title;
+                option.textContent = title;
+                dropdown.appendChild(option);
+            });
+
+            dropdown.addEventListener("change", function() {
+                filterEmployeesByTitle(xmlDoc, this.value);
+            });
+        }
+
+        function filterEmployeesByTitle(xmlDoc, selectedTitle) {
+            var employees = xmlDoc.getElementsByTagName("employee");
+            var tableBody = document.querySelector("#employeeTable tbody");
+            tableBody.innerHTML = "";
+
+            Array.from(employees).forEach(employee => {
+                if (employee.getAttribute("title") === selectedTitle) {
+                    var row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${employee.getAttribute("id")}</td>
+                        <td>${employee.getElementsByTagName("name")[0].textContent}</td>
+                        <td>${employee.getElementsByTagName("phone")[0].textContent}</td>`;
+                    tableBody.appendChild(row);
+                }
+            });
+        }
+
+        window.onload = function() {
+            loadXML();
+        };
+    </script>
+</body>
+</html>

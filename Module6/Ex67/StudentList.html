@@ -1,0 +1,118 @@
+<html>
+<head>
+  <title>Student Information</title>
+  <script type="text/javascript">
+    window.onload = function() {
+      var studentData = [
+        {
+          id: 987456,
+          name: "Marie Curie",
+          birthday: "7/11/1867",
+          gender: "Woman"
+        },
+        {
+          id: 987561,
+          name: "Einstein",
+          birthday: "14/3/1879",
+          gender: "Man"
+        },
+        {
+          id: 985467,
+          name: "Leó Szilárd",
+          birthday: "11/2/1898",
+          gender: "Man"
+        }
+      ];
+
+      var tableContent = document.getElementById("content");
+
+      studentData.forEach(student => {
+        var row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${student.id}</td>
+          <td>${student.name}</td>
+          <td>${student.birthday}</td>
+          <td>${student.gender}</td>
+        `;
+
+        row.addEventListener("click", () => {
+          displayStudentDetails(student);
+        });
+
+        row.addEventListener("mouseover", () => {
+            row.style.backgroundColor = "yellow";
+         });
+
+         row.addEventListener("mouseout", () => {
+            row.style.backgroundColor = "white";
+         });
+
+        tableContent.appendChild(row);
+      });
+      var headers = document.querySelectorAll("thead th");
+      headers.forEach((header, index) => {
+        let ascending = true; 
+        header.addEventListener("click", () => {
+          var rows = Array.from(tableContent.querySelectorAll("tr"));
+          
+          rows.sort((rowA, rowB) => {
+            var cellA = rowA.children[index].textContent;
+            var cellB = rowB.children[index].textContent;
+
+            return ascending
+              ? cellA.localeCompare(cellB, undefined, { numeric: true })
+              : cellB.localeCompare(cellA, undefined, { numeric: true });
+          });
+          rows.forEach(row => tableContent.appendChild(row));
+          ascending = !ascending; }) }) 
+    }
+
+    function displayStudentDetails(student) {
+      var detailsContainer = document.getElementById("studentdetails");
+      detailsContainer.innerHTML = `
+        <h2>Student Information</h2>
+        <table border="1px">
+            <tr style="background-color: lightgreen;">
+                <td colspan="2">Student Information</td>
+            </tr>
+            <tr>
+                <td>Student ID: </td>
+                <td>${student.id}</td>
+            </tr>
+            <tr>
+                <td>Student Name: </td>
+                <td>${student.name}</td>
+            </tr>
+            <tr>
+                <td>Birthday: </td>
+                <td>${student.birthday}</td>
+            </tr>
+            <tr>
+                <td>Gender: </td>
+                <td>${student.gender}</td>
+            </tr>
+        </table>
+      `;
+    }
+  </script>
+</head>
+<body>
+  <table border="1px">
+    <thead>
+      <tr style="background-color: yellow; text-align: center;">
+        <th colspan="4">List of Students</th>
+      </tr>
+      <tr style="background-color: lightgreen; text-align: center; color: white;">
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Birthday</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody id="content">
+    </tbody>
+  </table>
+
+  <div id="studentdetails"></div>
+</body>
+</html>

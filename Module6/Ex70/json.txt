@@ -1,0 +1,57 @@
+Requirement:
+Present the structure of JsonObject, JsonArray. Compare the difference
+between XML and JSON.
+
+Answer:
+The structure:
+1. JsonObject:
+{
+    "string1" : "value1",
+    "string2" : "value2",
+}
+
+Example: 
+{
+    "name" : "Thai An",
+    "gender" : "Female",
+}
+
+2. JsonArray
+{ "object": [
+            {
+                "string1" : "value1",
+                "string2" : "value2",
+                "string3" : "value3",
+            },
+            {
+                "string4" : "value4",
+                "string5" : "value5",
+                "string6" : "value6",
+            }]
+}
+Example:
+{ "student": [
+            {
+                "name" : "Thai An",
+                "gender" : "Female",
+                "id" : "K224111481",
+            },
+            {
+                "name" : "An Pham",
+                "gender" : "Female",
+                "id" : "K224111480",
+            }]
+}
+
+Compare the difference between XML and JSON
+1. Structure:
+XML follows a hierarchical format for example:
+<student>
+    <name>Thai An</name>
+    <gender>Female</gender>
+</student>
+
+while JSON use key value pairs and arrays to store data
+
+2. Parser
+XML need a XML parser while JSON can be parsed directly by JSON.parse()

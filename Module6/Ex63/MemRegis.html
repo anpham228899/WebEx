@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Member Registration</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th {
+            color: white;
+            background-color: blue;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        tr:hover {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Member Registration</h1>
+    <hr>
+    <form id="registrationForm">
+        <label>Name(*)</label><input type="text" id="name" name="name" required><br>
+        <label>Birthday(*) </label>
+        Day <select id="day" required></select>
+        Month <select id="month" required></select>
+        Year <select id="year" required></select><br>
+        <label>Gender(*)</label>
+        <select id="gender" name="gender" required>
+            <option value="Man">Man</option>
+            <option value="Woman">Woman</option>
+        </select><br>
+        <label>Email(*)</label><input type="email" id="email" name="email" required><br><br>
+        <label>Your favorite: </label><br>
+        <input type="checkbox" id="opt1" value="Shopping"><label for="opt1">Shopping</label><br>
+        <input type="checkbox" id="opt2" value="Tourism"><label for="opt2">Tourism</label><br>
+        <input type="checkbox" id="opt3" value="Chat"><label for="opt3">Chat</label><br>
+        <input type="checkbox" id="opt4" value="Read a book"><label for="opt4">Read a book</label><br>
+        <input type="checkbox" id="opt5" value="Listening to music"><label for="opt5">Listening to music</label><br><br>
+        <label>Your favorite color:</label><br>
+        <input type="radio" id="colorblue" name="color" value="Blue"><label for="colorblue"><span style="background-color: blue;">Blue</span></label><br>
+        <input type="radio" id="colorred" name="color" value="Red"><label for="colorred"><span style="background-color: red;">Red</span></label><br>
+        <input type="radio" id="coloryellow" name="color" value="Yellow"><label for="coloryellow"><span style="background-color: yellow;">Yellow</span></label><br>
+        <input type="radio" id="colorgreen" name="color" value="Green"><label for="colorgreen"><span style="background-color: green;">Green</span></label><br>
+        <input type="radio" id="colorviolet" name="color" value="Violet"><label for="colorviolet"><span style="background-color: violet;">Violet</span></label><br><br>
+        <button type="button" id="submitButton">Sign up</button>
+        <button type="button" id="clearButton">Reset</button>
+    </form>
+    <br>
+    <table id="memberTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Birthday</th>
+                <th>Hobbies</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        const daySelect = document.getElementById("day")
+        const monthSelect = document.getElementById("month")
+        const yearSelect = document.getElementById("year")
+
+        for (let i = 1; i <= 31; i++) {
+            daySelect.options.add(new Option(i, i))
+        }
+        for (let i = 1; i <= 12; i++) {
+            monthSelect.options.add(new Option(i, i))
+        }
+        for (let i = 1900; i <= new Date().getFullYear(); i++) {
+            yearSelect.options.add(new Option(i, i))
+        }
+
+        document.getElementById("submitButton").addEventListener("click", register)
+        document.getElementById("clearButton").addEventListener("click", clearTable)
+
+        function register() {
+            const name = document.getElementById("name").value.
+            const email = document.getElementById("email").value
+            const gender = document.getElementById("gender").value
+            const day = daySelect.value
+            const month = monthSelect.value
+            const year = yearSelect.value
+
+            if (!name) {
+                alert("Nhập tên")
+                document.getElementById("name").focus()
+                return
+            }
+
+            if (!email || !email.includes("@")) {
+                alert("Email không hợp lệ")
+                document.getElementById("email").focus()
+                return
+            }
+
+            const hobbies = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(cb => cb.value)
+                .join(', ')
+
+            const colorElement = document.querySelector('input[name="color"]:checked')
+            const color = colorElement ? colorElement.value : 'None'
+
+            const row = document.createElement('tr')
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${email}</td>
+                <td>${gender}</td>
+                <td>${day}/${month}/${year}</td>
+                <td>${hobbies || 'None'}</td>
+                <td>${color}</td>
+            `
+            row.addEventListener("mouseover", function() {
+                this.style.backgroundColor = "yellow"
+            })
+            row.addEventListener("mouseout", function() {
+                this.style.backgroundColor = "white"
+            })
+
+            document.getElementById('memberTable').querySelector('tbody').appendChild(row)
+            document.getElementById('registrationForm').reset()
+        }
+
+        function clearTable() {
+            const tbody = document.getElementById('memberTable').querySelector('tbody')
+            tbody.innerHTML = ""
+            document.getElementById("name").focus()
+        }
+    </script>
+</body>
+</html>
